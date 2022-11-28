@@ -1,0 +1,20 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>メンバー並べ替え</title>
+</head>
+<body>
+  <form action="/msort" method="post">
+    <p>
+      <input type="checkbox" name="order" value="desc">昇順にする
+    </p>
+    <p>
+      <input type="radio" name="sort_item" value="birthday">誕生日
+      <input type="radio" name="sort_item" value="birthplace">出身地
+      <input type="radio" name="sort_item" value="team">所属グループ
+    </p>
+    <input type="submit" value="送信">
+  </form>
+</body>
+</html>

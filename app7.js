@@ -42,10 +42,10 @@ app.get("/team/:team_id", (req,res) => {
 
 app.post("/gsort",(req, res) => {
   let desc = "";
-  let rq = req.query;
+  let rq = req.body;
   console.log({rq});
-  if(req.query.order) desc = "desc";
-  let sql = "select team_id, team, funs, debut from team order by " + req.query.sort_item + " " + desc + ";";
+  if(req.body.order) desc = "desc";
+  let sql = "select team_id, team, funs, debut from team order by " + req.body.sort_item + " " + desc + ";";
   console.log(sql);
   db.serialize( () => {
     db.all(sql, (error, data) => {
@@ -77,6 +77,23 @@ app.get("/jidol/:id", (req,res) => {
         res.render('show2', {mes:"エラーです"});
       }
       res.render('member', {data:row});
+    })
+  })
+})
+
+app.post("/msort",(req, res) => {
+  let desc = "";
+  let rq = req.body;
+  console.log({rq});
+  if(req.body.order) desc = "desc";
+  let sql = "select id, name, birthday, birthplace, team from jidol inner join team on jidol.team_id=team.team_id order by " + req.body.sort_item + " " + desc + ";";
+  console.log(sql);
+  db.serialize( () => {
+    db.all(sql, (error, data) => {
+      if(error){
+        res.render('show2', {mes:"エラーです"});
+      }
+      res.render('allmember', {data:data});
     })
   })
 })

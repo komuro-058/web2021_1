@@ -2,13 +2,11 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
 let sqls = [
-  'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (11, "大西流星", "2001/8/7", "兵庫県", 3);',
-  'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (12, "大橋和也", "1997/8/9", "福岡県", 3);',
-  'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (13, "高橋恭平", "2000/2/28", "大阪府", 3);',
-   'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (14, "長尾謙杜", "2002/8/15", "大阪府", 3);',
-   'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (15, "西畑大吾", "1997/1/9", "大阪府", 3);',
-  'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (17, "藤原丈一郎", "1996/2/8", "大阪府", 3);',
-   'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (17, "道枝駿佑", "2002/7/25", "大阪府", 3);'
+  'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (21, "永瀬廉", "1999/1/23", "東京都", 4);',
+  'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (22, "平野紫耀", "1997/1/29", "愛知県", 4);',
+  'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values  (18, "岸優太", "1995/9/29", "埼玉県", 4);',
+  'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (19, "神宮寺勇太", "1997/10/30", "千葉県", 4);',
+  'insert into jidol ("id", "name", "birthday", "birthplace", "team_id") values (20, "高橋海斗", "1999/4/3", "神奈川県", 4);'
   
 ]
 
