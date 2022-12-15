@@ -15,7 +15,7 @@ header img{
 }
 
 .main{
-  background:#dfbfff;
+  background:#c9c7cc;
   border-radius:10px;
   text-align:center;
   padding:10px 0
@@ -38,7 +38,7 @@ header img{
 }
 #ichiran ul li a{
   display:inline-block;
-  background:#ff65da;
+  background:#c695d0;
   border-radius:10px; /*角を丸く*/
   width:100px;
   padding:10px 10px;
@@ -95,7 +95,7 @@ img{
 }
 #search ul li a{
   display:inline-block;
-  background:#ff65da;
+  background:#c695d0;
   border-radius:10px; /*角を丸く*/
   padding:10px 10px;
   margin:10px 10px;
@@ -108,20 +108,27 @@ img{
   background:silver
 }
 #official{
-  display:flex;
   height:200px;
   color:gray;
 }
-#official h2:before{
-  content:"";
-  margin-left:1ex
+.title-border{
+  display:flex;
+  align-items:center;
+  margin:10px
 }
-#official h2:after{
+.title-border:before,.title-border:after{
+  border-top:3px solid;
   content:"";
-  margin-right:1ex
+  flex-grow:1
+}
+.title-border:before{
+  margin-right:1rem
+}
+.title-border:after{
+  margin-left:1rem
 }
 #offlink img{
   width:200px;
   border-radius:10px;
-  border: solid 3px #ff65da
+  border: solid 3px #c695d0
 }
