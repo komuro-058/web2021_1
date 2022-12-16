@@ -62,7 +62,7 @@ header img{
 }
 .slider{
   display:flex;
-  animation:loop-slide 60s infinite linear 1s both
+  animation:loop-slide 45s infinite linear 1s both
 }
 .slider-item{
   height:150px;

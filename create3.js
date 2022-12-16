@@ -2,12 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
 let schema = `
-create table team(
-  team_id integer primary key,
-  team text,
-  funs integer,
-  debut date
-);
+alter table team add team_img varchar(20);
 `
 
 db.serialize( () => {

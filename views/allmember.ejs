@@ -16,8 +16,6 @@
     <tr>
         <th></th>
         <th>名前</th>
-        <th>生年月日</th>
-        <th>出身</th>
         <th>所属グループ</th>
     </tr>
       <% for( let row of data ) { %>
@@ -25,8 +23,6 @@
         <tr>
             <td><a href="/jidol/<%=row.id%>"><%= row.id %></a></td>
             <td><%= row.name %></td>
-            <td><%= row.birthday %></td>
-            <td><%= row.birthplace %></td>
             <td><%= row.team %></td>
         </tr>
       <% } %>

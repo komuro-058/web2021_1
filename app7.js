@@ -11,15 +11,23 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.get("/", (req, res) => {
-  const message = "ようこそ！！";
-  res.render('show2', {mes:message});
+  let sql ="select team_id, team_img from team order by debut;";
+  db.serialize( () => {
+    db.all( sql, (error, row) => {
+      if(error){
+        res.render('error', {mes:エラーです});
+      }
+      console.log(row)
+      res.render('show2', {data:row});
+    })
+  }) 
 });
 
 app.get("/team", (req, res) => {
     db.serialize( () => {
         db.all("select team_id, team, funs, debut from team;", (error, row) => {
             if( error ) {
-                res.render('show2', {mes:"エラーです"});
+                res.render('error', {mes:"エラーです"});
             }
             res.render('allgroup', {data:row});
         })
@@ -32,7 +40,7 @@ app.get("/team/:team_id", (req,res) => {
     console.log(sql);
     db.all(sql, (error, row) => {
       if(error){
-        res.render('show2', {mes:"エラーです"});
+        res.render('error', {mes:"エラーです"});
       }
       console.log(row);
       res.render('gmember', {data:row});
@@ -50,7 +58,7 @@ app.post("/gsort",(req, res) => {
   db.serialize( () => {
     db.all(sql, (error, data) => {
       if(error){
-        res.render('show2', {mes:"エラーです"});
+        res.render('error', {mes:"エラーです"});
       }
       res.render('allgroup', {data:data});
     })
@@ -59,9 +67,9 @@ app.post("/gsort",(req, res) => {
 
 app.get("/jidol", (req, res) => {
     db.serialize( () => {
-      db.all("select id, name, birthday, birthplace, team from jidol inner join team on jidol.team_id=team.team_id;", (error, row) => {
+      db.all("select id, name, team from jidol inner join team on jidol.team_id=team.team_id;", (error, row) => {
         if(error){
-          res.render('show2', {mes:"エラーです"});
+          res.render('error', {mes:"エラーです"});
         }
         res.render('allmember', {data:row});
       })
@@ -74,8 +82,9 @@ app.get("/jidol/:id", (req,res) => {
     console.log(sql);
     db.all(sql, (error, row) => {
       if(error){
-        res.render('show2', {mes:"エラーです"});
+        res.render('error', {mes:"エラーです"});
       }
+      console.log(row);
       res.render('member', {data:row});
     })
   })
@@ -91,7 +100,7 @@ app.post("/msort",(req, res) => {
   db.serialize( () => {
     db.all(sql, (error, data) => {
       if(error){
-        res.render('show2', {mes:"エラーです"});
+        res.render('error', {mes:"エラーです"});
       }
       res.render('allmember', {data:data});
     })
@@ -105,7 +114,7 @@ app.post("/insert1", (req, res) => {
     db.run( sql, (error, row) => {
       console.log(error);
       if(error){
-        res.render('show2', {mes:エラーです});
+        res.render('error', {mes:エラーです});
       }
       res.redirect('/team');
     })
@@ -122,7 +131,7 @@ app.post("/insert2",(req, res) => {
     db.run( sql, (error, row) => {
       console.log(error);
       if(error){
-        res.render('show2', {mes:エラーです});
+        res.render('error', {mes:エラーです});
       }
       res.redirect('/jidol');
     })
@@ -136,7 +145,7 @@ app.post("/select1", (req, res) => {
   db.serialize( () => {
     db.all( sql, (error, row) => {
       if(error){
-        res.render('show2', {mes:エラーです});
+        res.render('error', {mes:エラーです});
       }
       console.log(row)
       res.render('group', {data:row});
@@ -150,10 +159,24 @@ app.post("/select2", (req, res) => {
   db.serialize( () => {
     db.all( sql, (error, row) => {
       if(error){
-        res.render('show2', {mes:エラーです});
+        res.render('error', {mes:エラーです});
       }
       console.log(row)
       res.render('member', {data:row});
+    })
+  })
+})
+
+app.get("/select3/:id", (req, res) => {
+  let sql = 'select team_id, team, funs, debut from team where team_id="'+ req.params.id +'";';
+  console.log(sql);
+  db.serialize( () => {
+    db.all( sql, (error, row) => {
+      if(error){
+        res.render('error', {mes:エラーです});
+      }
+      console.log(row)
+      res.render('group', {data:row});
     })
   })
 })
