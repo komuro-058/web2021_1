@@ -9,11 +9,17 @@
     <input type="submit" value="TOP">
   </form>
   <table border=1>
+    <tr>
+      <th></th>
+      <th>グループ名</th>
+      <th>ファミリークラブ会員数</th>
+      <th>デビュー日</th>
+    </tr>
       <% for( let row of data ) { %>
         <tr>
           <td><a href="/team/<%= row.team_id %>"><%= row.team_id %></td>
           <td><%= row.team %></td>
-          <td><%= row.funs %></td>
+          <td><%= row.funs +"名" %></td>
           <td><%= row.debut %></td>
         </tr>
       <% } %>

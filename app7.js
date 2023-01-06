@@ -67,7 +67,7 @@ app.post("/gsort",(req, res) => {
 
 app.get("/jidol", (req, res) => {
     db.serialize( () => {
-      db.all("select id, name, team from jidol inner join team on jidol.team_id=team.team_id;", (error, row) => {
+      db.all("select id, name, team, birthday from jidol inner join team on jidol.team_id=team.team_id;", (error, row) => {
         if(error){
           res.render('error', {mes:"エラーです"});
         }
